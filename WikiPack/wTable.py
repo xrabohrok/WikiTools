@@ -1,5 +1,5 @@
 from Tkinter import Tk
-import ClipboardContentException
+from ClipboardContentException import ClipboardContentException
 import string
 import os
 
@@ -27,6 +27,7 @@ class parseIntoWiki:
         self.clip = self.getFromClipboard()
         if len(self.clip) > 1:
             self.collection = string.split(self.clip, os.linesep)
+            print len(self.collection)
         else:
             raise ClipboardContentException("NonConvertable Clipboard Contents")
         return self.collection

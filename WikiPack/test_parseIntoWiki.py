@@ -2,7 +2,7 @@ from unittest import TestCase
 from wTable import parseIntoWiki
 from Tkinter import Tk
 
-import ClipboardContentException
+from ClipboardContentException import ClipboardContentException
 
 
 def setup_clipboard(stuff):
@@ -24,13 +24,17 @@ class TestParseIntoWiki(TestCase):
         self.fail()
 
     def test_parsecommon_detects_bad_clipboard(self):
-        setup_clipboard(None)
+        setup_clipboard("")
         blah = ""
         try:
             blah = self.testObject.parseCommon("\t")
-        except ClipboardContentException:
+        except ClipboardContentException as cce:
+            print(str(cce))
             return
-        self.fail("No/Unexpected exception thrown" + str(blah))
+        contents = ""
+        for i in blah:
+            contents += i + "\n"
+        self.fail("No/Unexpected exception thrown" + str(contents))
 
     def test_parseCommon(self):
         self.fail()

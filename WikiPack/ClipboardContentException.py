@@ -3,4 +3,4 @@ class ClipboardContentException():
         self.value = value
 
     def __str__(self):
-        return repr("This value from the clipboard is not usable:" + self.value)
+        return repr("This value from the clipboard is not usable: " + self.value)
